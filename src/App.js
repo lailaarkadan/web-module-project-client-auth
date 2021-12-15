@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Redirect ,Link} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Link, Switch } from 'react-router-dom';
 
 import Login from './components/Login';
 import FriendsList from './components/FriendsList';
@@ -10,36 +10,36 @@ import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
-    
+
     <Router>
-    <div className="App">
-      <header>
-        <h2>Friends</h2>
-        <Link className='link' to='/login'>Login</Link>
-        <Link className='link' to='/friends'> Friends List</Link>
-        <Link className='link' to='/friends/add'>Add a friend</Link>
-        <Link className='link' to='/logout'>Logout</Link>
+      <div className="App">
+        <header>
+          <h2>Friends</h2>
 
-        </header>
-
-      <Route exact path ="/">
-        <Login/>
-      </Route>
+          <Link className='link' to='/'>Login</Link>
+          <Link className='link' to='/friends'> Friends List</Link> 
+          <Link className='link' to='/friends/add'>Add a friend</Link>
+          <Link className='link' to='/logout'>Logout</Link>
           
-        <Route exact path ="/login">
-          <Redirect to="/"/>
+        </header>
+        <Switch>
+  
+          <Route exact path="/login">
+          <Login/>
+            <Redirect to="/" />
           </Route>
-          <PrivateRoute path="/friends" component={FriendsList}/>
-      
-          <Route path ="/friends/add">
-        <AddFriend/>
-          </Route>
-          <Route path ="/logout">
-        <Logout/>
-          </Route>
-          </div>
+
+          <PrivateRoute path="/friends" component={FriendsList} />
+          <PrivateRoute path="/friends/add" component={AddFriend}/>
+          <PrivateRoute path="/logout" component={Logout} />
+        </Switch>
+      </div>
     </Router>
   );
 }
 
 export default App;
+
+
+
+

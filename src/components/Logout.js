@@ -21,10 +21,10 @@ const Logout = () => {
             .catch(err => {
                 console.error(err)
             })
-    }, [])
+    }, []);
 
     
-    return(<div></div>)
+    return(<div></div>);
 }
 
 export default Logout;
