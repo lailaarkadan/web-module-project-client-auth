@@ -1,6 +1,7 @@
 import React from "react";
 
-const AddFriend = ()=>{
+const AddFriend = (props)=>{
+    const {friend} = props;
     return(<div>
         <h2>Add Friend</h2>
         <form>

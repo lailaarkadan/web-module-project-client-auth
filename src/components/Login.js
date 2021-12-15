@@ -21,7 +21,7 @@ const Login = ()=> {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/api/login', credentials)
+        axios.post('http://localhost:9000/api/login', credentials)
         .then(res => {
             localStorage.setItem('token', resp.data.payload);
             push('/friends');
