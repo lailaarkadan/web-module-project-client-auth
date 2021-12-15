@@ -1,15 +1,15 @@
-import axios from 'axios';
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 
-const initFromVal = {
+const initCred = {
     username: '',
     password: ''
 }
 
 const Login = ()=> {
-    const [credentials,setCredentials] = useState(initFromVal);
+    const [credentials,setCredentials] = useState(initCred);
     const { push } = useHistory();
 
     const handleChange = (e) => {
@@ -23,7 +23,7 @@ const Login = ()=> {
         e.preventDefault();
         axios.post('http://localhost:9000/api/login', credentials)
         .then(res => {
-            localStorage.setItem('token', resp.data.payload);
+            localStorage.setItem('token', res.data.payload);
             push('/friends');
         })
         .catch(err => console.log(err))
@@ -32,6 +32,7 @@ const Login = ()=> {
     return (
       <div>
         <form onSubmit={handleSubmit}>
+        <h1> Login </h1>
           <label>Username</label>
           <input type='text' name='username' onChange={handleChange} value={credentials.username}/>
   

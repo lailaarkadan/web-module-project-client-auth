@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from"react";
 import axios from "axios";
 
-const FriendList = () => {
+const FriendsList = () => {
     const [friends, setFriends] = useState([]);
     
     useEffect(() => {
